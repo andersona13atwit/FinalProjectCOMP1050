@@ -3,6 +3,8 @@ package application;
 import java.io.File;
 import java.util.ArrayList;
 
+import javafx.scene.paint.Color;
+
 import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
 
@@ -31,9 +33,18 @@ public class Grid {
 	}
 	private void gridFill() {
 		this.tiles = new Tile[rows][cols];
+		boolean isBlack = true;
 		for(int i = 0; i < this.rows; i++) {
 			for(int k = 0; k < this.cols; k++) {
-				tiles[i][k] = new Tile(i,k);
+				if(isBlack) {
+					tiles[i][k] = new Tile(i,k, Color.BLACK);
+					isBlack = false;
+				}
+				else {
+					tiles[i][k] = new Tile(i,k, Color.GREEN);
+					isBlack = true;
+				}
+				
 			}
 		}
 	}
@@ -61,7 +72,7 @@ public class Grid {
 		ArrayList<Rectangle> rects = new ArrayList<>();
 		for(int i = 0; i < this.rows; i++) {
 			for(int k = 0; k < this.cols; k++) {
-				tiles[i][k].draw();
+				rects.add(tiles[i][k].draw());
 			}
 		}
 		return rects;

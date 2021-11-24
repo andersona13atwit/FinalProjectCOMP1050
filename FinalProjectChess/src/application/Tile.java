@@ -1,17 +1,25 @@
 package application;
 
+import javafx.event.EventHandler;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+
 public class Tile {
 	public final int x,y;
+	public int width = 50;
+	public int height = 50;
 	public Piece currentlyHeld;
+	public Color color;
 
 	public Tile(int x, int y, Piece currentlyHeld) {
 		this.x = x;
 		this.y = y;
 		this.currentlyHeld = currentlyHeld;
 	}
-	public Tile(int x, int y) {
+	public Tile(int x, int y, Color color) {
 		this.x = x;
 		this.y = y;
+		this.color = color;
 	}
 	public Tile() {
 		this.x = 0;
@@ -63,7 +71,11 @@ public class Tile {
 	 * and so any tile can know its own instructions
 	 * 
 	 */
-	public void draw() {
+	public Rectangle draw() {
+		Rectangle toReturn = new Rectangle(x*width,y*height,25,25);
+		toReturn.setFill(color);
+//		toReturn.setOnMouseClicked(EventHandler<Event>());
+		return toReturn;
 		
 	}
 	
