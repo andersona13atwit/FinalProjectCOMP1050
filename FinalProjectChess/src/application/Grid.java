@@ -37,11 +37,11 @@ public class Grid {
 		for(int i = 0; i < this.rows; i++) {
 			for(int k = 0; k < this.cols; k++) {
 				if(isBlack) {
-					tiles[i][k] = new Tile(i,k, Color.BLACK);
+					tiles[i][k] = new Tile(i,k, true);
 					isBlack = false;
 				}
 				else {
-					tiles[i][k] = new Tile(i,k, Color.GREEN);
+					tiles[i][k] = new Tile(i,k, false);
 					isBlack = true;
 				}
 				

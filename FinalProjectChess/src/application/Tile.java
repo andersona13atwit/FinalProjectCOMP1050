@@ -1,6 +1,12 @@
 package application;
 
+import java.util.ArrayList;
+
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
+import javafx.scene.ImageCursor;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -10,20 +16,33 @@ public class Tile {
 	public int height = 50;
 	public Piece currentlyHeld;
 	public Color color;
+	public boolean selected;
+	public boolean isBlack;
+	public Rectangle rectRepresentation;
+	public static ArrayList<Tile> tiles = new ArrayList<Tile>();
 
 	public Tile(int x, int y, Piece currentlyHeld) {
 		this.x = x;
 		this.y = y;
 		this.currentlyHeld = currentlyHeld;
+		rectRepresentation = new Rectangle(x*width,y*height,25,25);
+		tiles.add(this);
+		
 	}
-	public Tile(int x, int y, Color color) {
+	public Tile(int x, int y, boolean isBlack) {
 		this.x = x;
 		this.y = y;
-		this.color = color;
+		this.isBlack = isBlack;
+		rectRepresentation = new Rectangle(x*width,y*height,25,25);
+		tiles.add(this);
+		
 	}
 	public Tile() {
 		this.x = 0;
 		this.y = 0;
+		rectRepresentation = new Rectangle(x*width,y*height,25,25);
+		tiles.add(this);
+		
 	}
 	
 	/**
@@ -65,6 +84,22 @@ public class Tile {
 	public int getY() {
 		return y;
 	}
+	
+	public void setColor(Color color) {
+		this.color = color;
+	}
+	
+	public void toggleSelected() {
+		selected = !selected;
+		if(selected) 
+			rectRepresentation.setFill(Color.GOLD);
+		else 
+			rectRepresentation.setFill(isBlack?Color.BLACK:Color.WHITE);
+	}
+	
+	
+	
+	
 	/**
 	 * This method needs to be passed a graphics object. <br>
 	 * The purpose is for less clutter in the main program <br>
@@ -72,10 +107,28 @@ public class Tile {
 	 * 
 	 */
 	public Rectangle draw() {
-		Rectangle toReturn = new Rectangle(x*width,y*height,25,25);
-		toReturn.setFill(color);
+		Tile temp = this;
+		
+		rectRepresentation.setFill(isBlack?Color.BLACK:Color.WHITE);	
+		rectRepresentation.setOnMouseClicked(new EventHandler<Event>() {
+			
+			@Override
+			public void handle(Event arg0) {
+				// TODO Auto-generated method stub
+				rectRepresentation.setFill(Color.GOLD);
+				for(Tile tile : tiles) {
+					if(tile.selected) {
+						tile.toggleSelected();
+						
+					}
+				}
+				temp.toggleSelected();
+			}
+			
+			
+		});
 //		toReturn.setOnMouseClicked(EventHandler<Event>());
-		return toReturn;
+		return rectRepresentation;
 		
 	}
 	
