@@ -1,5 +1,6 @@
 package application;
 	
+import java.io.File;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -8,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -28,7 +30,7 @@ public class Main extends Application {
 			// Group root = (Group)FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			
 			
-			Grid grid = new Grid(8,8);
+			Grid grid = new Grid(7,7);
 			ArrayList<Rectangle> newRects = grid.draw();
 			for(Rectangle temp : newRects) {
 				System.out.println(temp);
@@ -39,9 +41,11 @@ public class Main extends Application {
 			}
 			
 			Group root = new Group(rects);
-//			Scene scene = new Scene(root,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
-			Scene scene = new Scene(root, 1000,1000);
+			Scene scene = new Scene(root,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
+//			Scene scene = new Scene(root, 1000,1000);
 			scene.setFill(Color.BLANCHEDALMOND);
+			primaryStage.setTitle("Chess!");
+			primaryStage.getIcons().add(new Image(".\\\\assets\\\\portablejim-Chess-tile-Rook-1.png"));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

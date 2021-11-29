@@ -25,7 +25,7 @@ public class Tile {
 		this.x = x;
 		this.y = y;
 		this.currentlyHeld = currentlyHeld;
-		rectRepresentation = new Rectangle(x*width,y*height,25,25);
+		rectRepresentation = new Rectangle(x*width,y*height,width,height);
 		tiles.add(this);
 		
 	}
@@ -33,14 +33,14 @@ public class Tile {
 		this.x = x;
 		this.y = y;
 		this.isBlack = isBlack;
-		rectRepresentation = new Rectangle(x*width,y*height,25,25);
+		rectRepresentation = new Rectangle(x*width,y*height,width,height);
 		tiles.add(this);
 		
 	}
 	public Tile() {
 		this.x = 0;
 		this.y = 0;
-		rectRepresentation = new Rectangle(x*width,y*height,25,25);
+		rectRepresentation = new Rectangle(x*width,y*height,width,height);
 		tiles.add(this);
 		
 	}
@@ -127,7 +127,6 @@ public class Tile {
 			
 			
 		});
-//		toReturn.setOnMouseClicked(EventHandler<Event>());
 		return rectRepresentation;
 		
 	}
