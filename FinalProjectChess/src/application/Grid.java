@@ -34,6 +34,12 @@ public class Grid {
 		this.tiles = new Tile[rows][cols];
 		boolean isBlack = true;
 		for(int i = 0; i < this.rows; i++) {
+			if(i % 2 == 0) {
+				isBlack = true;
+			}
+			else {
+				isBlack = false;
+			}
 			for(int k = 0; k < this.cols; k++) {
 				if(isBlack) {
 					tiles[i][k] = new Tile(i,k, true);
