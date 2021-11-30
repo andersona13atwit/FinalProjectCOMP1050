@@ -85,16 +85,32 @@ public class Tile {
 		return y;
 	}
 	
+	/**
+	 * Used to change the color variable in the tile
+	 * 
+	 * @param color
+	 */
+	
 	public void setColor(Color color) {
 		this.color = color;
 	}
 	
+	/**
+	 * Sets selected to be the opposite of what it was (i.e. true -> false).
+	 * <br>
+	 * If selected becomes true, change the tiles color to gold, and when turned off change it back
+	 * 
+	 */
+	
 	public void toggleSelected() {
 		selected = !selected;
-		if(selected) 
+		if(selected) {
 			rectRepresentation.setFill(Color.GOLD);
-		else 
+//			currentlyHeld.toggleSelected();
+		}
+		else { 
 			rectRepresentation.setFill(isBlack?Color.BLACK:Color.WHITE);
+		}
 	}
 	
 	
@@ -123,6 +139,7 @@ public class Tile {
 					}
 				}
 				temp.toggleSelected();
+				System.out.println(temp);
 			}
 			
 			

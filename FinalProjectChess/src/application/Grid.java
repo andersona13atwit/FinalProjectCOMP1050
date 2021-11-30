@@ -3,9 +3,8 @@ package application;
 import java.io.File;
 import java.util.ArrayList;
 
-import javafx.scene.paint.Color;
+//import javafx.scene.paint.Color;
 
-import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
 
 public class Grid {
@@ -48,12 +47,14 @@ public class Grid {
 			}
 		}
 	}
+	
+	
 	public void gridToConsole() {
 		for(int i = 0; i < this.rows; i++) {
 			for(int k = 0; k < this.cols; k++) {
-				System.out.print(tiles[i][k]+" ");
+//				System.out.print(tiles[i][k]+" ");
 			}
-			System.out.println();
+//			System.out.println();
 		}
 	}
 	

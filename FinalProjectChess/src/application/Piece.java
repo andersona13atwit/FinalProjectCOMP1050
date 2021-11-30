@@ -3,6 +3,10 @@ package application;
 public abstract class Piece {
 	public Tile location;
 	public Tile[] canMoveTo;
+	public boolean isSelected;
+	
+	
+	
 	/**
 	 * Every piece must be able to move, and how it does so is unique to each type.
 	 * 
@@ -30,4 +34,8 @@ public abstract class Piece {
 	 * 
 	 */
 	public abstract void draw();
+
+	protected abstract void toggleSelected();
+	
+	protected abstract void calcMoves();
 }

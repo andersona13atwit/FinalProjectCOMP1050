@@ -30,11 +30,9 @@ public class Main extends Application {
 			// Group root = (Group)FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			
 			
-			Grid grid = new Grid(7,7);
+			// This grid bugs out when an even num of columns is used
+			Grid grid = new Grid(8,8);
 			ArrayList<Rectangle> newRects = grid.draw();
-			for(Rectangle temp : newRects) {
-				System.out.println(temp);
-			}
 			Rectangle[] rects = new Rectangle[newRects.size()];
 			for(int i = 0; i < rects.length; i++) {
 				rects[i] = newRects.get(i);
@@ -45,7 +43,7 @@ public class Main extends Application {
 //			Scene scene = new Scene(root, 1000,1000);
 			scene.setFill(Color.BLANCHEDALMOND);
 			primaryStage.setTitle("Chess!");
-			primaryStage.getIcons().add(new Image(".\\\\assets\\\\portablejim-Chess-tile-Rook-1.png"));
+//			primaryStage.getIcons().add(new Image(".\\\\assets\\\\portablejim-Chess-tile-Rook-1.png"));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
