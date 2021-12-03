@@ -13,8 +13,11 @@ public class Pawn extends Piece {
 	
 	
 	
-	Pawn(int x, int y, boolean isBlack) {
-		super(x, y, isBlack);
+	Pawn(Tile location, boolean isBlack) {
+		super(location, isBlack);
+		this.location = location;
+		this.isBlack = isBlack;
+		calcMoves();
 
 		
 		if(isBlack) {
@@ -33,15 +36,6 @@ public class Pawn extends Piece {
 	public Tile[] canMoveTo;
 	public boolean isSelected;
 
-
-
-//	public Pawn(Tile location, boolean isBlack) {
-//		
-//		this.location = location;
-//		this.isBlack = isBlack;
-//		calcMoves();
-//	}
-
 	@Override
 	public int move() {
 		// TODO Auto-generated method stub
@@ -53,7 +47,6 @@ public class Pawn extends Piece {
 		imageView.setX(x * 50-2);
 		imageView.setY(y* 50-2);
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

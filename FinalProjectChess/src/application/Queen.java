@@ -1,8 +1,8 @@
 package application;
 
 public class Queen extends Piece {
-	Queen(int x, int y, boolean isBlack) {
-		super(x, y, isBlack);
+	Queen(Tile location, boolean isBlack) {
+		super(location, isBlack);
 		// TODO Auto-generated constructor stub
 	}
 

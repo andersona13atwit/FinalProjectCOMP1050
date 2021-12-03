@@ -19,9 +19,10 @@ public abstract class Piece {
 
 
 	
-	Piece(int x,int y,boolean isBlack){
-		this.x = x;
-		this.y = y;
+	Piece(Tile location ,boolean isBlack){
+		this.location = location;
+		this.x = location.x;
+		this.y = location.y;
 		this.isBlack = isBlack;
 
 	}
