@@ -1,6 +1,7 @@
 package application;
 	
 import java.io.File;
+
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -44,6 +46,25 @@ public class Main extends Application {
 			scene.setFill(Color.BLANCHEDALMOND);
 			primaryStage.setTitle("Chess!");
 //			primaryStage.getIcons().add(new Image(".\\\\assets\\\\portablejim-Chess-tile-Rook-1.png"));
+			primaryStage.getIcons().add(new Image("blackpawn.png"));
+//  		website for pngs	https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
+			
+			
+			
+			
+			
+			
+			//test for drawing pieces
+			Image bp = new Image("blackpawn.png");
+			ImageView bpView = new ImageView(bp);
+			bpView.setX(295);
+			bpView.setY(295);
+			root.getChildren().add(bpView);
+			Pawn test = new Pawn(5,6,true);
+			root.getChildren().add(test.imageView);
+			
+			
+			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
