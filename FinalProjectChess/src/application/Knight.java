@@ -1,6 +1,11 @@
 package application;
 
 public class Knight extends Piece {
+	Knight(int x, int y, boolean isBlack) {
+		super(x, y, isBlack);
+		// TODO Auto-generated constructor stub
+	}
+
 	public Tile location;
 	public Tile[] canMoveTo;
 	public boolean isSelected;
