@@ -1,10 +1,12 @@
 package application;
 
 public class Knight extends Piece {
-	public Tile location;
-	public Tile[] canMoveTo;
-	public boolean isSelected;
-
+	
+	public Knight(Tile location) {
+		this.location = location;
+	}
+	
+	
 	@Override
 	public int move() {
 		// TODO Auto-generated method stub

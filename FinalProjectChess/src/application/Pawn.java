@@ -1,10 +1,14 @@
 package application;
 
 public class Pawn extends Piece {
-	public Tile location;
-	public Tile[] canMoveTo;
-	public boolean isSelected;
+	public boolean hasMoved = false;
 
+	public Pawn(Tile location, boolean isBlack) {
+		this.location = location;
+		this.isBlack = isBlack;
+		calcMoves();
+	}
+	
 	@Override
 	public int move() {
 		// TODO Auto-generated method stub
@@ -31,6 +35,9 @@ public class Pawn extends Piece {
 
 	@Override
 	protected void calcMoves() {
+		if(!hasMoved) {
+			
+		}
 		// TODO Auto-generated method stub
 
 	}

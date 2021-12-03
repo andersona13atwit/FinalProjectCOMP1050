@@ -1,10 +1,12 @@
 package application;
 
+import java.util.ArrayList;
+
 public abstract class Piece {
 	public Tile location;
-	public Tile[] canMoveTo;
+	public ArrayList<Tile> canMoveTo;
 	public boolean isSelected;
-	
+	public boolean isBlack;
 	
 	
 	/**
@@ -36,6 +38,10 @@ public abstract class Piece {
 	public abstract void draw();
 
 	protected abstract void toggleSelected();
+	
+	/**
+	 * This method will calculate the moves to fill canMoveTo every time the piece location is updated
+	 */
 	
 	protected abstract void calcMoves();
 }

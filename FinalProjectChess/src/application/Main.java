@@ -46,7 +46,7 @@ public class Main extends Application {
 			scene.setFill(Color.BLANCHEDALMOND);
 			primaryStage.setTitle("Chess!");
 //			primaryStage.getIcons().add(new Image(".\\\\assets\\\\portablejim-Chess-tile-Rook-1.png"));
-			primaryStage.getIcons().add(new Image("blackpawn.png"));
+//			primaryStage.getIcons().add(new Image("blackpawn.png"));
 //  		website for pngs	https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
 			
 			
@@ -55,13 +55,13 @@ public class Main extends Application {
 			
 			
 			//test for drawing pieces
-			Image bp = new Image("blackpawn.png");
-			ImageView bpView = new ImageView(bp);
-			bpView.setX(295);
-			bpView.setY(295);
-			root.getChildren().add(bpView);
-			Pawn test = new Pawn(5,6,true);
-			root.getChildren().add(test.imageView);
+//			Image bp = new Image("blackpawn.png");
+//			ImageView bpView = new ImageView(bp);
+//			bpView.setX(295);
+//			bpView.setY(295);
+//			root.getChildren().add(bpView);
+//			Pawn test = new Pawn(5,6,true);
+//			root.getChildren().add(test.imageView);
 			
 			
 			
