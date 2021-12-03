@@ -50,20 +50,45 @@ public class Main extends Application {
 //  		website for pngs	https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
 			
 			
+			//setup
+			Pawn bpawn0 = new Pawn(0,6,true);
+			Pawn bpawn1 = new Pawn(1,6,true);
+			Pawn bpawn2 = new Pawn(2,6,true);
+			Pawn bpawn3 = new Pawn(3,6,true);
+			Pawn bpawn4 = new Pawn(4,6,true);
+			Pawn bpawn5 = new Pawn(5,6,true);
+			Pawn bpawn6 = new Pawn(6,6,true);
+			Pawn bpawn7 = new Pawn(7,6,true);
 			
 			
+			Pawn wpawn0 = new Pawn(0,1,false);
+			Pawn wpawn1 = new Pawn(1,1,false);
+			Pawn wpawn2 = new Pawn(2,1,false);
+			Pawn wpawn3 = new Pawn(3,1,false);
+			Pawn wpawn4 = new Pawn(4,1,false);
+			Pawn wpawn5 = new Pawn(5,1,false);
+			Pawn wpawn6 = new Pawn(6,1,false);
+			Pawn wpawn7 = new Pawn(7,1,false);
+			
+			root.getChildren().add(bpawn0.imageView);
+			root.getChildren().add(bpawn1.imageView);
+			root.getChildren().add(bpawn2.imageView);
+			root.getChildren().add(bpawn3.imageView);
+			root.getChildren().add(bpawn4.imageView);
+			root.getChildren().add(bpawn5.imageView);
+			root.getChildren().add(bpawn6.imageView);
+			root.getChildren().add(bpawn7.imageView);
+
 			
 			
-			//test for drawing pieces
-//			Image bp = new Image("blackpawn.png");
-//			ImageView bpView = new ImageView(bp);
-//			bpView.setX(295);
-//			bpView.setY(295);
-//			root.getChildren().add(bpView);
-//			Pawn test = new Pawn(5,6,true);
-//			root.getChildren().add(test.imageView);
-			
-			
+			root.getChildren().add(wpawn0.imageView);
+			root.getChildren().add(wpawn1.imageView);
+			root.getChildren().add(wpawn2.imageView);
+			root.getChildren().add(wpawn3.imageView);
+			root.getChildren().add(wpawn4.imageView);
+			root.getChildren().add(wpawn5.imageView);
+			root.getChildren().add(wpawn6.imageView);
+			root.getChildren().add(wpawn7.imageView);
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();

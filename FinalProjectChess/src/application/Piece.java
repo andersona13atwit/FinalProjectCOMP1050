@@ -1,14 +1,48 @@
 package application;
 
+
 import java.util.ArrayList;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public abstract class Piece {
 	public Tile location;
 	public ArrayList<Tile> canMoveTo;
 	public boolean isSelected;
 	public boolean isBlack;
+
+	public int x;
+	public int y;
 	
+
+
 	
+	Piece(int x,int y,boolean isBlack){
+		this.x = x;
+		this.y = y;
+		this.isBlack = isBlack;
+
+	}
+	/**
+	 * 
+	 * @return piece x
+	 */
+	public int getX() {
+		return x;
+	}
+	
+	/**
+	 * 
+	 * @return piece y
+	 */
+	public int getY() {
+		return y;
+	}
+	public boolean pieceColor() {
+		return isBlack;
+	}
 	/**
 	 * Every piece must be able to move, and how it does so is unique to each type.
 	 * 
