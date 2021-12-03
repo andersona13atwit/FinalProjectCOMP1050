@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
+
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
@@ -109,7 +110,7 @@ public class Tile {
 //			currentlyHeld.toggleSelected();
 		}
 		else { 
-			rectRepresentation.setFill(isBlack?Color.BLACK:Color.WHITE);
+			rectRepresentation.setFill(isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);
 		}
 	}
 	
@@ -125,7 +126,7 @@ public class Tile {
 	public Rectangle draw() {
 		Tile temp = this;
 		
-		rectRepresentation.setFill(isBlack?Color.BLACK:Color.WHITE);	
+		rectRepresentation.setFill(isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);	
 		rectRepresentation.setOnMouseClicked(new EventHandler<Event>() {
 			
 			@Override
