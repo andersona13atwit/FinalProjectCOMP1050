@@ -52,7 +52,56 @@ public class Grid {
 				
 			}
 		}
+		gridpieces();
 	}
+	
+	
+	public void gridpieces() {
+		
+		
+		//black pawns
+		for(int i = 0;i < 8;i++){
+			tiles[1][i].setPiece(new Pawn(tiles[1][i],true));
+		}
+		//black rook;
+		tiles[0][0].setPiece(new Pawn(tiles[0][0],true));
+		tiles[0][7].setPiece(new Pawn(tiles[0][7],true));
+		//black knight
+		tiles[0][1].setPiece(new Pawn(tiles[0][1],true));
+		tiles[0][6].setPiece(new Pawn(tiles[0][6],true));
+		//black bishop
+		tiles[0][2].setPiece(new Pawn(tiles[0][2],true));
+		tiles[0][5].setPiece(new Pawn(tiles[0][5],true));
+		//black queen
+		tiles[0][4].setPiece(new Pawn(tiles[0][4],true));
+		
+		//black king
+		tiles[0][3].setPiece(new Pawn(tiles[0][3],true));
+		
+		
+		
+		
+		//white pawns
+		for(int i = 0;i < 8;i++){
+			tiles[6][i].setPiece(new Pawn(tiles[6][i],false));
+		}
+		//white rook
+		tiles[7][0].setPiece(new Pawn(tiles[7][0],true));
+		tiles[7][7].setPiece(new Pawn(tiles[7][7],true));
+		//white knight
+		tiles[7][1].setPiece(new Pawn(tiles[7][1],true));
+		tiles[7][6].setPiece(new Pawn(tiles[7][6],true));
+		//white bishop
+		tiles[7][2].setPiece(new Pawn(tiles[7][2],true));
+		tiles[7][5].setPiece(new Pawn(tiles[7][5],true));
+		//white queen
+		tiles[7][4].setPiece(new Pawn(tiles[7][4],true));
+		//white king
+		tiles[7][3].setPiece(new Pawn(tiles[7][3],true) );
+	}
+	
+	
+	
 	
 	
 	public void gridToConsole() {
