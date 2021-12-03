@@ -1,8 +1,20 @@
 package application;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class Bishop extends Piece {
-	Bishop(int x, int y, boolean isBlack) {
-		super(x, y, isBlack);
+	Bishop(Tile location,boolean isBlack) {
+		super(location, isBlack);
+		if(isBlack) {
+			image = new Image("blackbishop.png");
+		}
+		else {
+			image = new Image("whitebishop.png");
+		}
+		imageView = new ImageView(image);
+		imageView.setX(x * 50-2);
+		imageView.setY(y* 50-2);
 		// TODO Auto-generated constructor stub
 	}
 
