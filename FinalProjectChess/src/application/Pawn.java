@@ -8,8 +8,7 @@ import javafx.scene.image.ImageView;
 public class Pawn extends Piece {
 	public boolean hasMoved = false;
 	
-	public Image image;
-	public ImageView imageView;
+
 	
 	
 	

@@ -3,6 +3,8 @@ package application;
 import java.io.File;
 import java.util.ArrayList;
 
+import javafx.scene.Group;
+
 //import javafx.scene.paint.Color;
 
 import javafx.scene.shape.Rectangle;
@@ -10,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 public class Grid {
 	public int rows, cols;
 	public Tile[][] tiles;
+	public Group root;
 	
 	// Storage would be if we implement saving
 	public File storage;
@@ -20,9 +23,10 @@ public class Grid {
 		this.storage = storage;
 		this.gridFill();
 	}
-	public Grid(int rows, int cols) {
+	public Grid(int rows, int cols, Group root) {
 		this.rows = rows;
 		this.cols = cols;
+		this.root = root;
 		this.gridFill();
 	}
 	public Grid() {
@@ -52,7 +56,6 @@ public class Grid {
 				
 			}
 		}
-		gridpieces();
 	}
 	
 	
@@ -60,44 +63,50 @@ public class Grid {
 		
 		
 		//black pawns
+		
 		for(int i = 0;i < 8;i++){
-			tiles[1][i].setPiece(new Pawn(tiles[1][i],true));
+			tiles[i][1].setPiece(new Pawn(tiles[i][1],true));
+			root.getChildren().add((tiles[i][1].getPiece()).imageView);
 		}
 		//black rook;
-		tiles[0][0].setPiece(new Pawn(tiles[0][0],true));
-		tiles[0][7].setPiece(new Pawn(tiles[0][7],true));
+		tiles[0][0].setPiece(new Rook(tiles[0][0],true));
+		tiles[7][0].setPiece(new Rook(tiles[7][0],true));
+		
+		root.getChildren().add((tiles[0][0].getPiece()).imageView);
+		root.getChildren().add((tiles[7][0].getPiece()).imageView);
 		//black knight
-		tiles[0][1].setPiece(new Pawn(tiles[0][1],true));
-		tiles[0][6].setPiece(new Pawn(tiles[0][6],true));
+		tiles[1][0].setPiece(new Pawn(tiles[1][0],true));
+		tiles[6][0].setPiece(new Pawn(tiles[6][0],true));
 		//black bishop
-		tiles[0][2].setPiece(new Pawn(tiles[0][2],true));
-		tiles[0][5].setPiece(new Pawn(tiles[0][5],true));
+		tiles[2][0].setPiece(new Pawn(tiles[2][0],true));
+		tiles[5][0].setPiece(new Pawn(tiles[5][0],true));
 		//black queen
-		tiles[0][4].setPiece(new Pawn(tiles[0][4],true));
+		tiles[4][0].setPiece(new Pawn(tiles[4][0],true));
 		
 		//black king
-		tiles[0][3].setPiece(new Pawn(tiles[0][3],true));
+		tiles[3][0].setPiece(new Pawn(tiles[3][0],true));
 		
 		
 		
 		
 		//white pawns
 		for(int i = 0;i < 8;i++){
-			tiles[6][i].setPiece(new Pawn(tiles[6][i],false));
+			tiles[i][6].setPiece(new Pawn(tiles[i][6],false));
+			root.getChildren().add((tiles[i][6].getPiece()).imageView);
 		}
 		//white rook
-		tiles[7][0].setPiece(new Pawn(tiles[7][0],true));
+		tiles[0][7].setPiece(new Pawn(tiles[0][7],true));
 		tiles[7][7].setPiece(new Pawn(tiles[7][7],true));
 		//white knight
-		tiles[7][1].setPiece(new Pawn(tiles[7][1],true));
-		tiles[7][6].setPiece(new Pawn(tiles[7][6],true));
+		tiles[1][7].setPiece(new Pawn(tiles[1][7],true));
+		tiles[6][7].setPiece(new Pawn(tiles[6][7],true));
 		//white bishop
-		tiles[7][2].setPiece(new Pawn(tiles[7][2],true));
-		tiles[7][5].setPiece(new Pawn(tiles[7][5],true));
+		tiles[2][7].setPiece(new Pawn(tiles[2][7],true));
+		tiles[5][7].setPiece(new Pawn(tiles[5][7],true));
 		//white queen
-		tiles[7][4].setPiece(new Pawn(tiles[7][4],true));
+		tiles[4][7].setPiece(new Pawn(tiles[4][7],true));
 		//white king
-		tiles[7][3].setPiece(new Pawn(tiles[7][3],true) );
+		tiles[3][7].setPiece(new Pawn(tiles[3][7],true) );
 	}
 	
 	
@@ -128,7 +137,7 @@ public class Grid {
 		ArrayList<Rectangle> rects = new ArrayList<>();
 		for(int i = 0; i < this.rows; i++) {
 			for(int k = 0; k < this.cols; k++) {
-				rects.add(tiles[i][k].draw());
+				root.getChildren().add(tiles[i][k].draw());
 			}
 		}
 		return rects;

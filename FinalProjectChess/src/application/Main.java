@@ -32,14 +32,17 @@ public class Main extends Application {
 			// Group root = (Group)FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			
 			
-			Grid grid = new Grid(8,8);
-			ArrayList<Rectangle> newRects = grid.draw();
-			Rectangle[] rects = new Rectangle[newRects.size()];
-			for(int i = 0; i < rects.length; i++) {
-				rects[i] = newRects.get(i);
-			}
 			
-			Group root = new Group(rects);
+//			ArrayList<Rectangle> newRects = grid.draw();
+//			Rectangle[] rects = new Rectangle[newRects.size()];
+//			for(int i = 0; i < rects.length; i++) {
+//				rects[i] = newRects.get(i);
+//			}
+			
+			Group root = new Group();
+			Grid grid = new Grid(8,8, root);
+			grid.draw();
+			grid.gridpieces();
 			Scene scene = new Scene(root,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
 //			Scene scene = new Scene(root, 1000,1000);
 			scene.setFill(Color.BLANCHEDALMOND);
@@ -103,7 +106,6 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-		Grid myGrid = new Grid(7,3);
 //		myGrid.gridToConsole();
 //		myGrid.draw();
 		

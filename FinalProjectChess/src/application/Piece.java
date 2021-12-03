@@ -16,7 +16,8 @@ public abstract class Piece {
 	public int x;
 	public int y;
 	
-
+	public Image image;
+	public ImageView imageView;
 
 	
 	Piece(Tile location ,boolean isBlack){
