@@ -12,10 +12,10 @@ public class Knight extends Piece {
 	Knight(Tile location, boolean isBlack) {
 		super(location, isBlack);
 		if(isBlack) {
-			image = new Image("blackking.png");
+			image = new Image("blackknight.png");
 		}
 		else {
-			image = new Image("whiteking.png");
+			image = new Image("whiteknight.png");
 		}
 		imageView = new ImageView(image);
 		imageView.setX(x * 50-2);
