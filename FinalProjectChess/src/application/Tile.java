@@ -116,16 +116,16 @@ public class Tile {
 	
 	
 	
-	
+	 
 	/**
 	 * This method needs to be passed a graphics object. <br>
 	 * The purpose is for less clutter in the main program <br>
 	 * and so any tile can know its own instructions
 	 * 
 	 */
-	public Rectangle draw() {
+	public Rectangle draw(Grid grid) {
 		Tile temp = this;
-		
+		Grid usableGrid = grid;
 		rectRepresentation.setFill(isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);	
 		rectRepresentation.setOnMouseClicked(new EventHandler<Event>() {
 			
@@ -135,12 +135,17 @@ public class Tile {
 				rectRepresentation.setFill(Color.GOLD);
 				for(Tile tile : tiles) {
 					if(tile.selected) {
+						if(tile.getPiece() != null) {
+							temp.currentlyHeld = tile.getPiece();
+							temp.getPiece().setLocation(temp);
+							tile.currentlyHeld = null;
+						}
 						tile.toggleSelected();
 						
 					}
 				}
 				temp.toggleSelected();
-				System.out.println(temp);
+				System.out.println(temp + ": " + currentlyHeld);
 			}
 			
 			
@@ -158,7 +163,7 @@ public class Tile {
 	
 	public void update() {
 		// Put all code above draw
-		this.draw();
+//		this.draw();
 	}
 	
 	
