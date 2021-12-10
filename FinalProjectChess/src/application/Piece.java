@@ -1,15 +1,16 @@
-package application;
+  package application;
 
 
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 
 public abstract class Piece {
 	public Tile location;
-	public ArrayList<Tile> canMoveTo;
+	public ArrayList<Tile> canMoveTo = new ArrayList<Tile>();
 	public boolean isSelected;
 	public boolean isBlack;
 
@@ -63,7 +64,14 @@ public abstract class Piece {
 	 * <hr>
 	 * Each piece will update its location, its current status, the tiles it can move to, and its (value (?))
 	 */
-	public abstract void update();
+	public void update() {
+		this.x = location.x;
+		this.y = location.y;
+		imageView.setX(x * 50-2);
+		imageView.setY(y* 50-2);
+		calcMoves();
+		
+	}
 	
 	/**
 	 * This method needs to be passed a graphics object. <br>
@@ -73,11 +81,42 @@ public abstract class Piece {
 	 */
 	public abstract void draw();
 
-	protected abstract void toggleSelected();
+	public void toggleSelected() {
+		isSelected = !isSelected;
+		if(isSelected) {
+			System.out.println(this.toString()+" has been selected!!");
+			for(Tile tile : canMoveTo) {
+//				System.out.println(tile);
+				tile.rectRepresentation.setFill(Color.GREENYELLOW);
+			}
+		}
+		else {
+			for(Tile tile : canMoveTo) {
+				
+				tile.rectRepresentation.setFill(isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);
+			}
+		}
+	}
+	
+	
 	
 	/**
 	 * This method will calculate the moves to fill canMoveTo every time the piece location is updated
 	 */
 	
 	protected abstract void calcMoves();
+	
+	
+	public void setLocation(Tile temp) {
+		// TODO Auto-generated method stub
+		location.currentlyHeld = null;
+		location = temp;
+		update();
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.getClass().getSimpleName();
+	}
 }

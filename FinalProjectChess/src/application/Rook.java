@@ -2,10 +2,10 @@ package application;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 public class Rook extends Piece {
 	Rook(Tile location, boolean isBlack) {
 		super(location, isBlack);
+		calcMoves();
 		if(isBlack) {
 			image = new Image("blackrook.png");
 		}
@@ -19,7 +19,6 @@ public class Rook extends Piece {
 	}
 
 	public Tile location;
-	public Tile[] canMoveTo;
 	public boolean isSelected;
 
 	@Override
@@ -28,20 +27,9 @@ public class Rook extends Piece {
 		return 0;
 	}
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void toggleSelected() {
 		// TODO Auto-generated method stub
 
 	}

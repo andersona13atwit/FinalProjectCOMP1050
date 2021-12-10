@@ -2,23 +2,12 @@ package application;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-
-
 public class Pawn extends Piece {
 	public boolean hasMoved = false;
-	
 
-	
-	
-	
 	Pawn(Tile location, boolean isBlack) {
 		super(location, isBlack);
-		this.location = location;
-		this.isBlack = isBlack;
 		calcMoves();
-
-		
 		if(isBlack) {
 			image = new Image("blackpawn.png");
 		}
@@ -31,9 +20,7 @@ public class Pawn extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tile location;
-	public Tile[] canMoveTo;
-	public boolean isSelected;
+
 
 	@Override
 	public int move() {
@@ -41,29 +28,17 @@ public class Pawn extends Piece {
 		return 0;
 	}
 
-	@Override
-	public void update() {
-		imageView.setX(x * 50-2);
-		imageView.setY(y* 50-2);
-		// TODO Auto-generated method stub
-	}
 
 	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
 
-	}
-
+	} 
 	@Override
-	protected void toggleSelected() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void calcMoves() {
-		if(!hasMoved) {
-			
+	protected void calcMoves() {		
+		if(isBlack) {
+			canMoveTo.add(Tile.tiles.get(27));
+//			canMoveTo.add(location);
 		}
 		// TODO Auto-generated method stub
 

@@ -29,22 +29,11 @@ public class King extends Piece {
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void draw() {
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
-	protected void toggleSelected() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	protected void calcMoves() {

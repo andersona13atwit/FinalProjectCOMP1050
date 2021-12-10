@@ -5,11 +5,13 @@ import java.io.File;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -31,65 +33,19 @@ public class Main extends Application {
 			// I kept this root with fxmlloader because I'm not sure what it does and I'm not sure if we're using scenebuilder
 			// Group root = (Group)FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			
-			
-			
-//			ArrayList<Rectangle> newRects = grid.draw();
-//			Rectangle[] rects = new Rectangle[newRects.size()];
-//			for(int i = 0; i < rects.length; i++) {
-//				rects[i] = newRects.get(i);
-//			}
-			
+						
 			Group root = new Group();
 			Grid grid = new Grid(8,8, root);
 			grid.draw();
 			grid.gridpieces();
 			Scene scene = new Scene(root,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
-//			Scene scene = new Scene(root, 1000,1000);
 			scene.setFill(Color.BLANCHEDALMOND);
 			primaryStage.setTitle("Chess!");
-//			primaryStage.getIcons().add(new Image(".\\\\assets\\\\portablejim-Chess-tile-Rook-1.png"));
-//			primaryStage.getIcons().add(new Image("blackpawn.png"));
-//  		website for pngs	https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
+			primaryStage.getIcons().add(new Image("whitepawn.png"));
 			
-			//setup
-//			Pawn bpawn0 = new Pawn(0,6,true);
-//			Pawn bpawn1 = new Pawn(1,6,true);
-//			Pawn bpawn2 = new Pawn(2,6,true);
-//			Pawn bpawn3 = new Pawn(3,6,true);
-//			Pawn bpawn4 = new Pawn(4,6,true);
-//			Pawn bpawn5 = new Pawn(5,6,true);
-//			Pawn bpawn6 = new Pawn(6,6,true);
-//			Pawn bpawn7 = new Pawn(7,6,true);
-//			
-//			
-//			Pawn wpawn0 = new Pawn(0,1,false);
-//			Pawn wpawn1 = new Pawn(1,1,false);
-//			Pawn wpawn2 = new Pawn(2,1,false);
-//			Pawn wpawn3 = new Pawn(3,1,false);
-//			Pawn wpawn4 = new Pawn(4,1,false);
-//			Pawn wpawn5 = new Pawn(5,1,false);
-//			Pawn wpawn6 = new Pawn(6,1,false);
-//			Pawn wpawn7 = new Pawn(7,1,false);
-//			
-//			root.getChildren().add(bpawn0.imageView);
-//			root.getChildren().add(bpawn1.imageView);
-//			root.getChildren().add(bpawn2.imageView);
-//			root.getChildren().add(bpawn3.imageView);
-//			root.getChildren().add(bpawn4.imageView);
-//			root.getChildren().add(bpawn5.imageView);
-//			root.getChildren().add(bpawn6.imageView);
-//			root.getChildren().add(bpawn7.imageView);
-//
-//			
-
-//			root.getChildren().add(wpawn0.imageView);
-//			root.getChildren().add(wpawn1.imageView);
-//			root.getChildren().add(wpawn2.imageView);
-//			root.getChildren().add(wpawn3.imageView);
-//			root.getChildren().add(wpawn4.imageView);
-//			root.getChildren().add(wpawn5.imageView);
-//			root.getChildren().add(wpawn6.imageView);
-//			root.getChildren().add(wpawn7.imageView);
+			
+			// website for pngs	https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
+			
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();
