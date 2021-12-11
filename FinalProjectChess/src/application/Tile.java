@@ -20,8 +20,8 @@ public class Tile {
 	public static ArrayList<Tile> tiles = new ArrayList<Tile>();
 	public static Tile[][] tiles2d = new Tile[8][8];
 	public static boolean blackTurn = false;
-	public static ArrayList<Piece> whitePieces = new ArrayList<Piece>();
-	public static ArrayList<Piece> blackPieces = new ArrayList<Piece>();
+	public static Grid grid;
+
 
 	public Tile(int x, int y, Piece currentlyHeld) {
 		this.x = x;
@@ -125,59 +125,14 @@ public class Tile {
 	 * 
 	 */
 	public Rectangle draw(Grid grid) {
-		Tile temp = this;
+//		Tile this = this;
 
 		rectRepresentation.setFill(isBlack ? Color.rgb(51, 25, 0, 1.0) : Color.BLANCHEDALMOND);
 		rectRepresentation.setOnMouseClicked(new EventHandler<Event>() {
 
 			@Override
 			public void handle(Event arg0) {
-				boolean whiteKingLives = false;
-				boolean blackKingLives = false;
-				// TODO Auto-generated method stub
-				rectRepresentation.setFill(Color.GOLD);
-				boolean swapOccured = false;
-				for (Tile tile : tiles) {
-					if (tile.selected) {
-						if (tile.getPiece() != null && tile.currentlyHeld.isSelected) {
-							if (tile.getPiece().canMoveTo.contains(temp) && tile.currentlyHeld.isBlack == blackTurn) {
-								swapOccured = true;
-								blackTurn = !blackTurn;
-								temp.currentlyHeld = tile.currentlyHeld;
-								temp.currentlyHeld.hasMoved = true;
-								temp.currentlyHeld.toggleSelected();
-								temp.getPiece().setLocation(temp, grid);
-								grid.update();
-								tile.toggleSelected();
-								for (Tile tile2 : tiles) {
-									if (tile2.selected) {
-										tile2.toggleSelected();
-									}
-								}
-								break;
-							}
-						}
-						tile.toggleSelected();
-					}
-				}
-				temp.toggleSelected();
-				if (!swapOccured && temp.currentlyHeld != null)
-					temp.currentlyHeld.toggleSelected();
-				System.out.println(temp + ": " + currentlyHeld);
-				for(Piece piece : whitePieces) {
-					if(piece instanceof King)
-						whiteKingLives = true;
-				}
-				for(Piece piece : blackPieces) {
-					if(piece instanceof King)
-						blackKingLives = true;
-				}
-				if(!whiteKingLives) {
-					grid.root.getChildren().add(new Text("BLACK WINS!"));
-				}
-				else if(!blackKingLives) {
-					grid.root.getChildren().add(new Text("WHITE WINS!"));
-				}
+				mouseCalc(grid);
 			}
 			
 				
@@ -186,17 +141,76 @@ public class Tile {
 
 	}
 
-	/**
-	 * Every object must be able to update itself, and these will all be called in
-	 * the main method.
-	 * <hr>
-	 * Tile will update its currently held piece, its white value and its black
-	 * value.
-	 */
 
-	public void update() {
-		// Put all code above draw
-//		this.draw();
+	public static void setGrid(Grid newGrid) {
+		Tile.grid = newGrid;
+	}
+	
+	
+	
+	public void mouseCalc(Grid grid) {
+		boolean whiteKingLives = false;
+		boolean blackKingLives = false;
+		// TODO Auto-generated method stub
+		rectRepresentation.setFill(Color.GOLD);
+		boolean swapOccured = false;
+		for (Tile tile : tiles) {
+			if (tile.selected) {
+				if (tile.getPiece() != null && tile.currentlyHeld.isSelected) {
+					if (tile.getPiece().canMoveTo.contains(this) && tile.currentlyHeld.isBlack == blackTurn) {
+						swapOccured = true;
+						blackTurn = !blackTurn;
+						this.currentlyHeld = tile.currentlyHeld;
+						this.currentlyHeld.hasMoved = true;
+						this.currentlyHeld.toggleSelected();
+						this.getPiece().setLocation(this, grid);
+						grid.update();
+						tile.toggleSelected();
+						for (Tile tile2 : tiles) {
+							if (tile2.selected) {
+								tile2.toggleSelected();
+							}
+						}
+						break;
+					}
+				}
+				tile.toggleSelected();
+			}
+		}
+		this.toggleSelected();
+		if (!swapOccured && this.currentlyHeld != null)
+			this.currentlyHeld.toggleSelected();
+//		System.out.println(this + ": " + currentlyHeld);
+		
+		for(Tile pieceHolder : Tile.tiles) {
+			if(pieceHolder.currentlyHeld instanceof King) {
+				if(pieceHolder.currentlyHeld.isBlack)
+					blackKingLives = true;
+				else if(!pieceHolder.currentlyHeld.isBlack)
+					whiteKingLives = true;
+					
+			}
+		}
+		if(!whiteKingLives) {
+			Rectangle bg = new Rectangle(0,0,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
+			bg.setFill(Color.WHITE);
+			grid.root.getChildren().add(bg);
+			Text winningText = new Text((grid.rows*(grid.getTile(0, 0).width)/2)-75,grid.cols*(grid.getTile(0, 0).height)/2,"BLACK WINS!");
+			winningText.setFill(Color.BLACK);
+			winningText.setStyle("900");
+			winningText.setStyle("-fx-font: 24 arial;");
+			grid.root.getChildren().add(winningText);
+		}
+		else if(!blackKingLives) {
+			Rectangle bg = new Rectangle(0,0,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
+			bg.setFill(Color.WHITE);
+			grid.root.getChildren().add(bg);
+			Text winningText = new Text((grid.rows*(grid.getTile(0, 0).width)/2)-75,grid.cols*(grid.getTile(0, 0).height)/2,"WHITE WINS!");
+			winningText.setFill(Color.BLACK);
+			winningText.setStyle("900");
+			winningText.setStyle("-fx-font: 24 arial;");
+			grid.root.getChildren().add(winningText);
+		}
 	}
 
 }

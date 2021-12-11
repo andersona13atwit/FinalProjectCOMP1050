@@ -19,6 +19,7 @@ public class Pawn extends Piece {
 		imageView = new ImageView(image);
 		imageView.setX(x * 50-2);
 		imageView.setY(y* 50-2);
+		setHandlerForImageView(Tile.grid);
 		// TODO Auto-generated constructor stub
 	}
 

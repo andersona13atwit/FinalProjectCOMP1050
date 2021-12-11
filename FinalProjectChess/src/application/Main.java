@@ -24,6 +24,7 @@ public class Main extends Application {
 						
 			Group root = new Group();
 			Grid grid = new Grid(8,8, root);
+			Tile.setGrid(grid);
 			grid.draw();
 			grid.gridpieces();
 			Scene scene = new Scene(root,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));

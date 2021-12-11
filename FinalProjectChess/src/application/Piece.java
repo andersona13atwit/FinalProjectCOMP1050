@@ -3,6 +3,8 @@
 
 import java.util.ArrayList;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -26,10 +28,6 @@ public abstract class Piece {
 		this.x = location.x;
 		this.y = location.y;
 		this.isBlack = isBlack;
-		if(isBlack)
-			Tile.blackPieces.add(this);
-		else
-			Tile.whitePieces.add(this);
 
 	}
 	/**
@@ -105,23 +103,28 @@ public abstract class Piece {
 	 * @param newLocation
 	 */
 	public void setLocation(Tile newLocation, Grid grid) {
-		// TODO Auto-generated method stub
-//			grid.root.getChildren().remove(location.currentlyHeld.imageView);
 		location.currentlyHeld = null;
 		location = newLocation;
 		
 		update();
 	}
 	
-//	public void hasMoved() {
-//		if(this instanceof Pawn) {
-//			
-//		}
-//	}
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return this.getClass().getSimpleName();
 	}
+	
+	public void setHandlerForImageView(Grid grid) {
+		imageView.setOnMouseClicked(new EventHandler<Event>() {
+
+			@Override
+			public void handle(Event arg0) {
+				location.mouseCalc(grid);
+			}
+			
+				
+		});
+	}
+	
 }
