@@ -52,6 +52,14 @@ public class Pawn extends Piece {
 		else {
 			if(Tile.tiles.indexOf(location)-1<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)-1).currentlyHeld == null)
 				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-1));
+			//top right
+			if(((x < 7 && y > 0)&& Tile.tiles.get(locationIndex + 7).currentlyHeld != null)&& Tile.tiles.get(locationIndex + 7).currentlyHeld.isBlack != this.isBlack) {
+				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location) + 7));
+			}
+			//top left
+			if(((x > 0 && y > 0)&& Tile.tiles.get(locationIndex - 9).currentlyHeld != null)&& Tile.tiles.get(locationIndex - 9).currentlyHeld.isBlack != this.isBlack) {
+				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location) - 9));
+			}
 			if(!hasMoved) 
 				if(Tile.tiles.indexOf(location)-2<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)-2).currentlyHeld == null)
 					canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-2));
