@@ -6,6 +6,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 public class Tile {
 	public final int x, y;
@@ -18,6 +19,9 @@ public class Tile {
 	public Rectangle rectRepresentation;
 	public static ArrayList<Tile> tiles = new ArrayList<Tile>();
 	public static Tile[][] tiles2d = new Tile[8][8];
+	public static boolean blackTurn = false;
+	public static ArrayList<Piece> whitePieces = new ArrayList<Piece>();
+	public static ArrayList<Piece> blackPieces = new ArrayList<Piece>();
 
 	public Tile(int x, int y, Piece currentlyHeld) {
 		this.x = x;
@@ -107,7 +111,7 @@ public class Tile {
 	public void toggleSelected() {
 		selected = !selected;
 		if (selected) {
-			rectRepresentation.setFill(Color.GOLD);
+			rectRepresentation.setFill(isBlack ? Color.rgb(214, 168, 2) : Color.GOLD);
 //			currentlyHeld.toggleSelected();
 		} else {
 			rectRepresentation.setFill(isBlack ? Color.rgb(51, 25, 0, 1.0) : Color.BLANCHEDALMOND);
@@ -128,14 +132,17 @@ public class Tile {
 
 			@Override
 			public void handle(Event arg0) {
+				boolean whiteKingLives = false;
+				boolean blackKingLives = false;
 				// TODO Auto-generated method stub
 				rectRepresentation.setFill(Color.GOLD);
 				boolean swapOccured = false;
 				for (Tile tile : tiles) {
 					if (tile.selected) {
 						if (tile.getPiece() != null && tile.currentlyHeld.isSelected) {
-							if (tile.getPiece().canMoveTo.contains(temp)) {
+							if (tile.getPiece().canMoveTo.contains(temp) && tile.currentlyHeld.isBlack == blackTurn) {
 								swapOccured = true;
+								blackTurn = !blackTurn;
 								temp.currentlyHeld = tile.currentlyHeld;
 								temp.currentlyHeld.hasMoved = true;
 								temp.currentlyHeld.toggleSelected();
@@ -157,8 +164,23 @@ public class Tile {
 				if (!swapOccured && temp.currentlyHeld != null)
 					temp.currentlyHeld.toggleSelected();
 				System.out.println(temp + ": " + currentlyHeld);
+				for(Piece piece : whitePieces) {
+					if(piece instanceof King)
+						whiteKingLives = true;
+				}
+				for(Piece piece : blackPieces) {
+					if(piece instanceof King)
+						blackKingLives = true;
+				}
+				if(!whiteKingLives) {
+					grid.root.getChildren().add(new Text("BLACK WINS!"));
+				}
+				else if(!blackKingLives) {
+					grid.root.getChildren().add(new Text("WHITE WINS!"));
+				}
 			}
-
+			
+				
 		});
 		return rectRepresentation;
 

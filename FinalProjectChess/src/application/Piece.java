@@ -26,6 +26,10 @@ public abstract class Piece {
 		this.x = location.x;
 		this.y = location.y;
 		this.isBlack = isBlack;
+		if(isBlack)
+			Tile.blackPieces.add(this);
+		else
+			Tile.whitePieces.add(this);
 
 	}
 	/**
@@ -73,15 +77,14 @@ public abstract class Piece {
 	
 	public void toggleSelected() {
 		isSelected = !isSelected;
+		for(Tile tile : Tile.tiles) {
+			tile.rectRepresentation.setFill(tile.isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);
+		}
+		location.rectRepresentation.setFill(Color.GOLD);
 		if(isSelected) {
 //			System.out.println(this.toString()+" has been selected!!");
-			for(Tile tile : canMoveTo) {
-				tile.rectRepresentation.setFill(Color.GREENYELLOW);
-			}
-		}
-		else {
-			for(Tile tile : canMoveTo) {
-				tile.rectRepresentation.setFill(tile.isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);
+			for(Tile tile : this.canMoveTo) {
+				tile.rectRepresentation.setFill(tile.isBlack?Color.rgb(105, 140, 69):Color.rgb(171, 227, 113));
 			}
 		}
 	}

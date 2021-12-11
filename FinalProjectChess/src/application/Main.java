@@ -1,26 +1,14 @@
 package application;
 	
-import java.io.File;
 
-import java.util.ArrayList;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
-import javafx.fxml.FXMLLoader;
+
 
 
 public class Main extends Application {
@@ -40,8 +28,8 @@ public class Main extends Application {
 			grid.gridpieces();
 			Scene scene = new Scene(root,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
 			scene.setFill(Color.BLANCHEDALMOND);
-			grid.tiles[4][4].currentlyHeld = new Rook(grid.tiles[4][4], true);
-			root.getChildren().add(grid.tiles[4][4].currentlyHeld.imageView);
+//			grid.tiles[4][4].currentlyHeld = new Rook(grid.tiles[4][4], true);
+//			root.getChildren().add(grid.tiles[4][4].currentlyHeld.imageView);
 			primaryStage.setTitle("Chess!");
 			primaryStage.getIcons().add(new Image("whitepawn.png"));
 			
