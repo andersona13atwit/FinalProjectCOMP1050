@@ -139,7 +139,8 @@ public class Tile {
 								temp.currentlyHeld = tile.currentlyHeld;
 								temp.currentlyHeld.hasMoved = true;
 								temp.currentlyHeld.toggleSelected();
-								temp.getPiece().setLocation(temp);
+								temp.getPiece().setLocation(temp, grid);
+								grid.update();
 								tile.toggleSelected();
 								for (Tile tile2 : tiles) {
 									if (tile2.selected) {

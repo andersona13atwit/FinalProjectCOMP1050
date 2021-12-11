@@ -58,8 +58,7 @@ public abstract class Piece {
 		this.y = location.y;
 		imageView.setX(x * 50-2);
 		imageView.setY(y* 50-2);
-		Tile tempTile = new Tile(-1,-1,false);
-		Pawn temp = new Pawn(tempTile, false);
+
 		
 		calcMoves();
 		
@@ -102,10 +101,12 @@ public abstract class Piece {
 	 * 
 	 * @param newLocation
 	 */
-	public void setLocation(Tile newLocation) {
+	public void setLocation(Tile newLocation, Grid grid) {
 		// TODO Auto-generated method stub
+//			grid.root.getChildren().remove(location.currentlyHeld.imageView);
 		location.currentlyHeld = null;
 		location = newLocation;
+		
 		update();
 	}
 	

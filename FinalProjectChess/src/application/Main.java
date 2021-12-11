@@ -40,13 +40,16 @@ public class Main extends Application {
 			grid.gridpieces();
 			Scene scene = new Scene(root,grid.rows*(grid.getTile(0, 0).width),grid.cols*(grid.getTile(0, 0).height));
 			scene.setFill(Color.BLANCHEDALMOND);
-			grid.tiles[3][3].currentlyHeld = new Rook(grid.tiles[3][3], true);
-			root.getChildren().add(grid.tiles[3][3].currentlyHeld.imageView);
+			grid.tiles[4][4].currentlyHeld = new Rook(grid.tiles[4][4], true);
+			root.getChildren().add(grid.tiles[4][4].currentlyHeld.imageView);
 			primaryStage.setTitle("Chess!");
 			primaryStage.getIcons().add(new Image("whitepawn.png"));
 			
+			//root.getChildren().remove(tiles[5][5]currentlyHeld.imageView);
 			
 			// website for pngs	https://commons.wikimedia.org/wiki/Category:PNG_chess_pieces/Standard_transparent
+			
+			
 			
 			
 			primaryStage.setScene(scene);

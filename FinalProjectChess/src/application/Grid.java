@@ -58,43 +58,57 @@ public class Grid {
 		}
 	}
 	
+	public void update() {
+		root.getChildren().clear();
+		for (Tile tile : Tile.tiles) {
+			root.getChildren().add(tile.rectRepresentation);
+			if(tile.getPiece() != null) {
+				root.getChildren().add((tile.getPiece()).imageView);
+				tile.getPiece().calcMoves();
+			}
+		}
+	}
+
+	
 	
 	public void gridpieces() {
+		
+		
 		
 		
 		//black pawns
 		
 		for(int i = 0;i < 8;i++){
 			tiles[i][1].setPiece(new Pawn(tiles[i][1],true));
-//			root.getChildren().add((tiles[i][1].getPiece()).imageView);
+			root.getChildren().add((tiles[i][1].getPiece()).imageView);
 		}
 		//black rook;
 		tiles[0][0].setPiece(new Rook(tiles[0][0],true));
 		tiles[7][0].setPiece(new Rook(tiles[7][0],true));
 		
-//		root.getChildren().add((tiles[0][0].getPiece()).imageView);
-//		root.getChildren().add((tiles[7][0].getPiece()).imageView);
+		root.getChildren().add((tiles[0][0].getPiece()).imageView);
+		root.getChildren().add((tiles[7][0].getPiece()).imageView);
 		//black knight
 		tiles[1][0].setPiece(new Knight(tiles[1][0],true));
 		tiles[6][0].setPiece(new Knight(tiles[6][0],true));
 		
-//		root.getChildren().add((tiles[1][0].getPiece()).imageView);
-//		root.getChildren().add((tiles[6][0].getPiece()).imageView);
+		root.getChildren().add((tiles[1][0].getPiece()).imageView);
+		root.getChildren().add((tiles[6][0].getPiece()).imageView);
 		//black bishop
 		tiles[2][0].setPiece(new Bishop(tiles[2][0],true));
 		tiles[5][0].setPiece(new Bishop(tiles[5][0],true));
 		
-//		root.getChildren().add((tiles[2][0].getPiece()).imageView);
-//		root.getChildren().add((tiles[5][0].getPiece()).imageView);
+		root.getChildren().add((tiles[2][0].getPiece()).imageView);
+		root.getChildren().add((tiles[5][0].getPiece()).imageView);
 		//black queen
 		tiles[4][0].setPiece(new Queen(tiles[4][0],true));
 		
-//		root.getChildren().add((tiles[4][0].getPiece()).imageView);
+		root.getChildren().add((tiles[4][0].getPiece()).imageView);
 
 		//black king
 		tiles[3][0].setPiece(new King(tiles[3][0],true));
 		
-//		root.getChildren().add((tiles[3][0].getPiece()).imageView);
+		root.getChildren().add((tiles[3][0].getPiece()).imageView);
 
 		
 		
@@ -102,58 +116,48 @@ public class Grid {
 		//white pawns
 		for(int i = 0;i < 8;i++){
 			tiles[i][6].setPiece(new Pawn(tiles[i][6],false));
-//			root.getChildren().add((tiles[i][6].getPiece()).imageView);
+			root.getChildren().add((tiles[i][6].getPiece()).imageView);
 		}
 		//white rook
 		tiles[0][7].setPiece(new Rook(tiles[0][7],false));
 		tiles[7][7].setPiece(new Rook(tiles[7][7],false));
 		
-//		root.getChildren().add((tiles[0][7].getPiece()).imageView);
-//		root.getChildren().add((tiles[7][7].getPiece()).imageView);
+		root.getChildren().add((tiles[0][7].getPiece()).imageView);
+		root.getChildren().add((tiles[7][7].getPiece()).imageView);
 
 		//white knight
 		tiles[1][7].setPiece(new Knight(tiles[1][7],false));
 		tiles[6][7].setPiece(new Knight(tiles[6][7],false));
 		
-//		root.getChildren().add((tiles[1][7].getPiece()).imageView);
-//		root.getChildren().add((tiles[6][7].getPiece()).imageView);
+		root.getChildren().add((tiles[1][7].getPiece()).imageView);
+		root.getChildren().add((tiles[6][7].getPiece()).imageView);
 
 		//white bishop
 		tiles[2][7].setPiece(new Bishop(tiles[2][7],false));
 		tiles[5][7].setPiece(new Bishop(tiles[5][7],false));
 		
-//		root.getChildren().add((tiles[2][7].getPiece()).imageView);
-//		root.getChildren().add((tiles[5][7].getPiece()).imageView);
+		root.getChildren().add((tiles[2][7].getPiece()).imageView);
+		root.getChildren().add((tiles[5][7].getPiece()).imageView);
 
 		//white queen
 		tiles[4][7].setPiece(new Queen(tiles[4][7],false));
 		
-//		root.getChildren().add((tiles[4][7].getPiece()).imageView);
+		root.getChildren().add((tiles[4][7].getPiece()).imageView);
 
 		//white king
 		tiles[3][7].setPiece(new King(tiles[3][7],false) );
 		
-//		root.getChildren().add((tiles[3][7].getPiece()).imageView);
+		root.getChildren().add((tiles[3][7].getPiece()).imageView);
 		
-		updatePieces();
-	}
-	
-	
-	public void updatePieces() {
-		for(int i = 0; i < tiles.length; i++) {
-			for(int k = 0; k < tiles[0].length; k++) {
-				if(tiles[i][k].currentlyHeld != null) 
-					root.getChildren().remove(tiles[i][k].currentlyHeld.imageView);
-			}
-		}
-		for(int i = 0; i < tiles.length; i++) {
-			for(int k = 0; k < tiles[0].length; k++) {
-				if(tiles[i][k].currentlyHeld != null) {
-					root.getChildren().add(tiles[i][k].currentlyHeld.imageView);
-				}
+		for (Tile tile : Tile.tiles) {
+			if(tile.getPiece() != null) {
+				tile.getPiece().calcMoves();
 			}
 		}
 	}
+	
+	
+	
 	
 	
 	public void gridToConsole() {
