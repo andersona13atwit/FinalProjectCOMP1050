@@ -4,6 +4,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class King extends Piece {
+	int temp;
+	int x;
+	int y;
 	King(Tile location, boolean isBlack) {
 		super(location, isBlack);
 		if(isBlack) {
@@ -23,6 +26,20 @@ public class King extends Piece {
 	@Override
 	protected void calcMoves() {
 		// TODO Auto-generated method stub
+		canMoveTo.clear();
+		temp = Tile.tiles.indexOf(location);
+		x = temp / 8;
+		y = temp % 8;
+		
+		if(x < 7) {
+			canMoveTo.add(Tile.tiles.get(temp + 8));
+		}
+		if(x < 7 & y < 7) {
+			canMoveTo.add(Tile.tiles.get(temp + 9));
+		}
+		if(x < 7 & y > 0) {
+			canMoveTo.add(Tile.tiles.get(temp + 8));
+		}
 
 	}
 
