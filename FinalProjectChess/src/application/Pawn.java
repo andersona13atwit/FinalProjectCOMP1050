@@ -27,17 +27,20 @@ public class Pawn extends Piece {
 	protected void calcMoves() {
 		canMoveTo.clear();
 		if(isBlack) {
-			if(Tile.tiles.indexOf(location)+1<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)).currentlyHeld == null) 
+//			if(					Tile.tiles.get(	Tile.tiles.indexOf(location)+1 ).currentlyHeld == null) {
+//				
+//			}
+			if(Tile.tiles.indexOf(location)+1<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)+1).currentlyHeld == null) 
 				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)+1));
 			if(!hasMoved) 
-				if(Tile.tiles.indexOf(location)+2<Tile.tiles.size())
+				if(Tile.tiles.indexOf(location)+2<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)+2).currentlyHeld == null)
 					canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)+2));
 		}
 		else {
-			if(Tile.tiles.indexOf(location)-1<Tile.tiles.size())
+			if(Tile.tiles.indexOf(location)-1<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)-1).currentlyHeld == null)
 				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-1));
 			if(!hasMoved) 
-				if(Tile.tiles.indexOf(location)-2<Tile.tiles.size())
+				if(Tile.tiles.indexOf(location)-2<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)-2).currentlyHeld == null)
 					canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-2));
 		}
 		// TODO Auto-generated method stub

@@ -32,7 +32,6 @@ public class Rook extends Piece {
 		}
 		for(int i = Tile.tiles.size()-1; i > 0; i-=8) {
 			if(Tile.tiles.indexOf(location)-i>0 ) {
-				System.out.println("Hello");
 				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-i));
 			}
 		}

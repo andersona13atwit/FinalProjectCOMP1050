@@ -17,6 +17,7 @@ public class Tile {
 	public boolean isBlack;
 	public Rectangle rectRepresentation;
 	public static ArrayList<Tile> tiles = new ArrayList<Tile>();
+	public static Tile[][] tiles2d = new Tile[8][8];
 
 	public Tile(int x, int y, Piece currentlyHeld) {
 		this.x = x;
@@ -33,6 +34,7 @@ public class Tile {
 		this.isBlack = isBlack;
 		rectRepresentation = new Rectangle(x * width, y * height, width, height);
 		tiles.add(this);
+		tiles2d[x][y] = this;
 
 	}
 
