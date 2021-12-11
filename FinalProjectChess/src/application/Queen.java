@@ -24,11 +24,12 @@ public class Queen extends Piece {
 		canMoveTo.clear();
 		temp = Tile.tiles.indexOf(location);
 		for(int i = 0; i < 64;i++) {
-			if ((i % 8 == temp % 8)& i != temp) {
-				canMoveTo.add(Tile.tiles.get(i));
+			if ((i % 8 == temp % 8)& i != temp || i / 8 == temp / 8 & i != temp) {
+				if(Tile.tiles.get(i).currentlyHeld == null) {
+					canMoveTo.add(Tile.tiles.get(i));
+				}
 			}
 		}
-		
 		
 		
 		// TODO Auto-generated method stub
