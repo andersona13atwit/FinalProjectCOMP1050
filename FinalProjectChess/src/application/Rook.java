@@ -18,26 +18,24 @@ public class Rook extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tile location;
-	public boolean isSelected;
-
-	@Override
-	public int move() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
-	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	protected void calcMoves() {
 		// TODO Auto-generated method stub
-
+		canMoveTo.clear();
+		for(int i = 0; i < Tile.tiles.size(); i+=8) {
+			if(Tile.tiles.indexOf(location)+i<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)+i).currentlyHeld == null) {
+				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)+i));
+			}
+		}
+		for(int i = Tile.tiles.size()-1; i > 0; i-=8) {
+			if(Tile.tiles.indexOf(location)-i>0 ) {
+				System.out.println("Hello");
+				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-i));
+			}
+		}
 	}
 
 }

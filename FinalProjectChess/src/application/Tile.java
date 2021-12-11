@@ -132,14 +132,13 @@ public class Tile {
 				for (Tile tile : tiles) {
 					if (tile.selected) {
 						if (tile.getPiece() != null && tile.currentlyHeld.isSelected) {
-							
 							if (tile.getPiece().canMoveTo.contains(temp)) {
 								swapOccured = true;
 								temp.currentlyHeld = tile.currentlyHeld;
+								temp.currentlyHeld.hasMoved = true;
 								temp.currentlyHeld.toggleSelected();
 								temp.getPiece().setLocation(temp);
 								tile.toggleSelected();
-
 								for (Tile tile2 : tiles) {
 									if (tile2.selected) {
 										tile2.toggleSelected();
@@ -147,10 +146,8 @@ public class Tile {
 								}
 								break;
 							}
-
 						}
 						tile.toggleSelected();
-
 					}
 				}
 				temp.toggleSelected();

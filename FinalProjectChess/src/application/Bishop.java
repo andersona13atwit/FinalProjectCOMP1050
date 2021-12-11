@@ -18,22 +18,6 @@ public class Bishop extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Tile location;
-	public Tile[] canMoveTo;
-	public boolean isSelected;
-
-	@Override
-	public int move() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	protected void calcMoves() {

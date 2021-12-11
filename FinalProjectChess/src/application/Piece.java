@@ -13,10 +13,10 @@ public abstract class Piece {
 	public ArrayList<Tile> canMoveTo = new ArrayList<Tile>();
 	public boolean isSelected;
 	public boolean isBlack;
-
+	public boolean isAlive;
 	public int x;
 	public int y;
-	
+	public boolean hasMoved = false;
 	public Image image;
 	public ImageView imageView;
 
@@ -46,18 +46,7 @@ public abstract class Piece {
 	public boolean pieceColor() {
 		return isBlack;
 	}
-	/**
-	 * Every piece must be able to move, and how it does so is unique to each type.
-	 * 
-	 * @return Success State on Movement <br>
-	 * <ul>
-	 * 
-	 * 1. Successful <br>
-	 * 0. Not Possible <br>
-	 * -1. Error
-	 * </ul>
-	 */
-	public abstract int move();
+	
 	
 	/**
 	 * Every object must be able to update itself, and these will all be called in the main method.
@@ -69,31 +58,31 @@ public abstract class Piece {
 		this.y = location.y;
 		imageView.setX(x * 50-2);
 		imageView.setY(y* 50-2);
+		Tile tempTile = new Tile(-1,-1,false);
+		Pawn temp = new Pawn(tempTile, false);
+		
 		calcMoves();
 		
 	}
 	
-	/**
-	 * This method needs to be passed a graphics object. <br>
-	 * The purpose is for less clutter in the main program <br>
-	 * and so any piece can know its own instructions
-	 * 
-	 */
-	public abstract void draw();
+	
 
+	/**
+	 * Changes the piece's selected state between true or false<br>
+	 * and updates tile colors accordingly
+	 */
+	
 	public void toggleSelected() {
 		isSelected = !isSelected;
 		if(isSelected) {
-			System.out.println(this.toString()+" has been selected!!");
+//			System.out.println(this.toString()+" has been selected!!");
 			for(Tile tile : canMoveTo) {
-//				System.out.println(tile);
 				tile.rectRepresentation.setFill(Color.GREENYELLOW);
 			}
 		}
 		else {
 			for(Tile tile : canMoveTo) {
-				
-				tile.rectRepresentation.setFill(isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);
+				tile.rectRepresentation.setFill(tile.isBlack?Color.rgb(51, 25, 0,1.0):Color.BLANCHEDALMOND);
 			}
 		}
 	}
@@ -106,13 +95,25 @@ public abstract class Piece {
 	
 	protected abstract void calcMoves();
 	
-	
-	public void setLocation(Tile temp) {
+	/**
+	 * Sets the location for the piece to be the new provided tile,<br>
+	 * as well as setting the old tile to be holding no piece<br>
+	 * and updating the images
+	 * 
+	 * @param newLocation
+	 */
+	public void setLocation(Tile newLocation) {
 		// TODO Auto-generated method stub
 		location.currentlyHeld = null;
-		location = temp;
+		location = newLocation;
 		update();
 	}
+	
+//	public void hasMoved() {
+//		if(this instanceof Pawn) {
+//			
+//		}
+//	}
 	
 	@Override
 	public String toString() {

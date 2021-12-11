@@ -3,7 +3,7 @@ package application;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 public class Pawn extends Piece {
-	public boolean hasMoved = false;
+//	public boolean hasMoved = false;
 
 	Pawn(Tile location, boolean isBlack) {
 		super(location, isBlack);
@@ -22,26 +22,29 @@ public class Pawn extends Piece {
 
 
 
+ 
 	@Override
-	public int move() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public void draw() {
-		// TODO Auto-generated method stub
-
-	} 
-	@Override
-	protected void calcMoves() {		
+	protected void calcMoves() {
+		canMoveTo.clear();
 		if(isBlack) {
-			canMoveTo.add(Tile.tiles.get(27));
-//			canMoveTo.add(location);
+			if(Tile.tiles.indexOf(location)+1<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)).currentlyHeld == null) 
+				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)+1));
+			if(!hasMoved) 
+				if(Tile.tiles.indexOf(location)+2<Tile.tiles.size())
+					canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)+2));
+		}
+		else {
+			if(Tile.tiles.indexOf(location)-1<Tile.tiles.size())
+				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-1));
+			if(!hasMoved) 
+				if(Tile.tiles.indexOf(location)-2<Tile.tiles.size())
+					canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-2));
 		}
 		// TODO Auto-generated method stub
 
 	}
+//	public void hasMoved() {
+//		hasMoved = true;
+//	}
 
 }
