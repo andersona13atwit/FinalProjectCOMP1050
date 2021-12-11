@@ -62,7 +62,7 @@ public class Pawn extends Piece {
 				canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location) - 9));
 			}
 			if(!hasMoved) 
-				if(Tile.tiles.indexOf(location)-2<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)-2).currentlyHeld == null)
+				if(Tile.tiles.indexOf(location)-2<Tile.tiles.size() && Tile.tiles.get(Tile.tiles.indexOf(location)-2).currentlyHeld == null && Tile.tiles.get(Tile.tiles.indexOf(location)-1).currentlyHeld == null)
 					canMoveTo.add(Tile.tiles.get(Tile.tiles.indexOf(location)-2));
 		}
 		// TODO Auto-generated method stub
